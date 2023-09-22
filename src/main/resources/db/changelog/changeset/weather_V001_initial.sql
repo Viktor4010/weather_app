@@ -10,6 +10,6 @@ create table measurements
     id         bigserial primary key,
     value      double precision not null,
     raining    boolean          not null,
-    sensor_id  bigint references sensor (id) not null,
+    sensor_id  bigint references sensor (id) not null   ,
     created_at timestamptz default current_timestamp
 );
