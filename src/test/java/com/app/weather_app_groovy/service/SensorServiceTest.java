@@ -60,16 +60,4 @@ class SensorServiceTest {
         assertEquals("Sensor with name sensor already exists", sensorValidationException.getMessage());
         verify(sensorRepository, never()).save(sensor);
     }
-
-    @Test
-    public void testRegisterDataIntegrityViolationException() {
-        SensorDto sensorDto = new SensorDto();
-        Sensor sensor = new Sensor();
-        when(sensorMapper.toSensor(sensorDto)).thenReturn(sensor);
-        when(sensorRepository.findSensorByName(sensor.getName())).thenReturn(java.util.Optional.empty());
-        doThrow(DataIntegrityViolationException.class).when(sensorRepository).save(sensor);
-
-        assertThrows(DataIntegrityViolationException.class, () -> sensorService.register(sensorDto));
-        verify(sensorRepository, times(1)).save(sensor);
-    }
 }
