@@ -1,7 +1,6 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-#    instead 'localhost' need 'postgres' if you use docker
     url: jdbc:postgresql://localhost:5432/postgres
     username: user
     password: password

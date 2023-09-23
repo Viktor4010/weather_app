@@ -8,10 +8,3 @@ services:
     ports:
       - '5432:5432'
 
-#  weather_app:
-#    build: ./
-#    depends_on:
-#      - postgres
-#    ports:
-#      - '9095:9095'
-
