@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,5 +40,11 @@ public class MeasurementService {
         log.info("Measurement with id {} was registered", savedMeasurement.getId());
 
         return measurementMapper.toMeasurementDto(savedMeasurement);
+    }
+
+    @Transactional(readOnly = true)
+    public List<MeasurementDto> getAllMeasurements(Double value) {
+        List<Measurement> all = measurementRepository.findAllWithValueFilter(value);
+        return measurementMapper.toListMeasurementDto(all);
     }
 }
