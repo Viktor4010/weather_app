@@ -29,8 +29,8 @@ public class SensorService {
 
     private void sensorAlreadyExistsValidation(Sensor sensor) {
         sensorRepository.findSensorByName(sensor.getName()).ifPresent(s -> {
-                    log.error("Sensor with name {} already exists", sensor.getName());
-                    throw new SensorValidationException("Sensor with name " + sensor.getName() + " already exists");
-                });
+            log.error("Sensor with name {} already exists", sensor.getName());
+            throw new SensorValidationException("Sensor with name " + sensor.getName() + " already exists");
+        });
     }
 }

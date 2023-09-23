@@ -24,6 +24,11 @@ public class MeasurementController {
         return measurementService.getAllMeasurements(value);
     }
 
+    @GetMapping("/rainy-days-count")
+    public Long getRainyDaysCount() {
+        return measurementService.getRainyDaysCount();
+    }
+
     @PostMapping("/add")
     public MeasurementDto addMeasurement(@RequestBody @Valid MeasurementDto measurementDto) {
         return measurementService.addMeasurement(measurementDto);

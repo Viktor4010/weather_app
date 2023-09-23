@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 @Slf4j
 public class MeasurementService {
     private final MeasurementRepository measurementRepository;
@@ -42,9 +43,17 @@ public class MeasurementService {
         return measurementMapper.toMeasurementDto(savedMeasurement);
     }
 
-    @Transactional(readOnly = true)
+
     public List<MeasurementDto> getAllMeasurements(Double value) {
         List<Measurement> all = measurementRepository.findAllWithValueFilter(value);
+        log.info("Retrieve all measurements");
         return measurementMapper.toListMeasurementDto(all);
+    }
+
+
+    public Long getRainyDaysCount() {
+        Long rainyDaysCount = measurementRepository.getRainyDaysCount();
+        log.info("Retrieved rainy days count: {}", rainyDaysCount);
+        return rainyDaysCount;
     }
 }

@@ -13,11 +13,11 @@ public interface MeasurementMapper {
 
     Measurement toMeasurement(MeasurementDto measurementDto);
 
-   default List<MeasurementDto> toListMeasurementDto(List<Measurement> all) {
-       return all.stream()
-               .map(this::toMeasurementDto)
-               .toList();
-   }
+    default List<MeasurementDto> toListMeasurementDto(List<Measurement> all) {
+        return all.stream()
+                .map(this::toMeasurementDto)
+                .toList();
+    }
 
     default List<Measurement> toListMeasurement(List<MeasurementDto> all) {
         return all.stream()

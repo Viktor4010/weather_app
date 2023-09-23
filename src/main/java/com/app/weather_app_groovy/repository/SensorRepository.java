@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface SensorRepository extends JpaRepository<Sensor, Long> {
 
     @Query(nativeQuery = true, value = """
-    select * from sensor where name = :name
-    """)
+            select * from sensor where name = :name
+            """)
     Optional<Sensor> findSensorByName(@Param("name") String name);
 }

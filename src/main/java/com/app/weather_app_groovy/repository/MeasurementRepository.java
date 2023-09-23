@@ -12,6 +12,12 @@ import java.util.List;
 public interface MeasurementRepository extends JpaRepository<Measurement, Long> {
 
     @Query(nativeQuery = true,
-            value = "select * from measurements where :value is null or value > :value")
+            value = "select * from measurements " +
+                    "where :value is null or value > :value")
     List<Measurement> findAllWithValueFilter(@Param(value = "value") Double value);
+
+    @Query(nativeQuery = true,
+            value = "select count(*) from measurements " +
+                    "where raining = true")
+    Long getRainyDaysCount();
 }
